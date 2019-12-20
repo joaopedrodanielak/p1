@@ -43,8 +43,19 @@ router.delete('/deletar/:id', async (req,res)=>{
     }
 })
 router.patch('/editar/:id', async(req,res)=>{
+    let data = {
+        nome : req.body.nome,
+        sobrenome : req.body.sobrenome,
+        cpf : req.body.cpf,
+        rg:req.body.rg,
+        data_de_nascimento : req.body.data_de_nascimento,
+        endereco : req.body.endereco,
+        cidade : req.body.cidade,
+        telefone : req.body.telefone,
+        email : req.body.email 
+    }
     try {
-        const updatedCliente = await CadastroCliente.updateOne({_id: req.body.id}, {$set:{nome : req.body.nome}})
+        const updatedCliente = await CadastroCliente.updateOne({_id: req.params.id},{$set:{ nome :req.body.nome}})
         res.json(updatedCliente)
         console.log("Atualizado com sucesso")
     } catch (error) {
