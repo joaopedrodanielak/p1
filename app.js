@@ -11,6 +11,14 @@ app.use(bodyParser.json())
 
 //Rotas
 app.use('/cadastro',cadastro)
+//Mongoose
+mongoose.Promise = global.Promise
+mongoose.connect("mongodb://localhost/p1",{useUnifiedTopology: true,useNewUrlParser : true})
+.then(()=>{
+    console.log("conectado ao banco de dados com sucesso")
+}).catch((err)=>{
+    console.log("erro ao conectar ao banco de dados :" +err)
+})
 
 
 //Conexao

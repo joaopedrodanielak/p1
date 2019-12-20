@@ -27,4 +27,29 @@ router.post('/cadastrar/cliente', async (req,res)=>{
         res.json({message : error})
     }
 })
+router.get('/visualizar/clientes', async (req,res)=>{
+    CadastroCliente.find().then((CadastroCliente)=>{
+        res.send(CadastroCliente)
+    })
+})
+
+router.delete('/deletar/:id', async (req,res)=>{
+    try {
+        const removedCliente  = await CadastroCliente.deleteOne({_id : req.params.id})
+        res.json(removedCliente)
+        console.log("deletado com sucesso")
+    } catch (error) {
+        res.json({message : error})
+    }
+})
+router.patch('/editar/:id', async(req,res)=>{
+    try {
+        const updatedCliente = await CadastroCliente.updateOne({_id: req.body.id}, {$set:{nome : req.body.nome}})
+        res.json(updatedCliente)
+        console.log("Atualizado com sucesso")
+    } catch (error) {
+        res.json({message : error})
+        console.log("Erro ao editar"+error)
+    }
+})
 module.exports = router
