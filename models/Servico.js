@@ -13,6 +13,18 @@ const Servico = new Schema({
     funcionario : {
         type : mongoose.Schema.Types.ObjectId,
         ref : "funcionario"
+    },
+    date : {
+        type : Date,
+        default : Date.now()
+    },
+    status : {
+        type : Boolean,
+        default : true
+    },
+    horas : {
+        type : Number,
+        required : false
     }
 })
 mongoose.model('servico',Servico)

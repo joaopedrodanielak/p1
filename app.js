@@ -4,13 +4,19 @@ const bodyParser = require('body-parser')
 const express = require('express')
 const app = express()
 const path = require('path')
-const cadastro = require('./routes/cadastroCliente')
-
+const cadastroCliente = require('./routes/cadastroCliente')
+const cadastroServico = require('./routes/cadastroServico')
+const cadastroFuncionario = require('./routes/cadastroFuncionario')
+const cadastroMateriais = require('./routes/cadastroMateriais')
 app.use(bodyParser.urlencoded({extended : true}))
 app.use(bodyParser.json())
 
 //Rotas
-app.use('/cadastro',cadastro)
+app.use('/cadastroCliente',cadastroCliente)
+app.use('/cadastroServico',cadastroServico)
+app.use('/cadastroFuncionario',cadastroFuncionario)
+app.use('/cadastroMateriais',cadastroMateriais)
+
 //Mongoose
 mongoose.Promise = global.Promise
 mongoose.connect("mongodb://localhost/p1",{useUnifiedTopology: true,useNewUrlParser : true})
