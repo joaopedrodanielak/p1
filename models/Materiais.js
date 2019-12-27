@@ -9,6 +9,10 @@ const Materiais = new Schema({
     preco : {
         type : Number,
         required : true
+    },
+    estoque : {
+        type : Number,
+        required : true
     }
 })
 

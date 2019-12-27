@@ -8,6 +8,7 @@ const cadastroCliente = require('./routes/cadastroCliente')
 const cadastroServico = require('./routes/cadastroServico')
 const cadastroFuncionario = require('./routes/cadastroFuncionario')
 const cadastroMateriais = require('./routes/cadastroMateriais')
+const comprarMateriais = require('./routes/comprarMateriais')
 app.use(bodyParser.urlencoded({extended : true}))
 app.use(bodyParser.json())
 
@@ -16,10 +17,10 @@ app.use('/cadastroCliente',cadastroCliente)
 app.use('/cadastroServico',cadastroServico)
 app.use('/cadastroFuncionario',cadastroFuncionario)
 app.use('/cadastroMateriais',cadastroMateriais)
-
+app.use('/comprarMateriais',comprarMateriais)
 //Mongoose
 mongoose.Promise = global.Promise
-mongoose.connect("mongodb://localhost/p1",{useUnifiedTopology: true,useNewUrlParser : true})
+mongoose.connect("mongodb+srv://joao:<password>@cluster0-iduzy.mongodb.net/test?retryWrites=true&w=majority",{useUnifiedTopology: true,useNewUrlParser : true})
 .then(()=>{
     console.log("conectado ao banco de dados com sucesso")
 }).catch((err)=>{
